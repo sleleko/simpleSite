@@ -2,7 +2,11 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    {% if title %}
     <title>{{ title }} - Leleko.Ru</title>
+    {% else %}
+    <title>Без имени - Leleko.Ru</title>
+    {% endif %}
 </head>
 <body>
 Главная страница - генерация шаблона

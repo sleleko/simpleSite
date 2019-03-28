@@ -9,7 +9,12 @@
     {% endif %}
 </head>
 <body>
-    <dib>Главное меню: <a href="/index">Главная</a> </dib>
+    <nav>Главное меню:
+        <ul class="li"><a href="/index">Главная</a> </ul>
+        <ul class="li"><a href="/about">Обо мне</a> </ul>
+        <ul class="li"><a href="/login">Вход</a> </ul>
+        <ul class="li"><a href="/contacts">Контакты</a> </ul>
+    </nav>
     <hr>
     {% block content %}{% endblock %}
     {% block counters %}

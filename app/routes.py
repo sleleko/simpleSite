@@ -1,6 +1,7 @@
 from flask import render_template
 from flask import flash
 from flask import redirect
+from flask import url_for
 from app import app
 from app.forms import LoginForm
 
@@ -24,7 +25,7 @@ def login():
         flash('Вход под пользователем {username}, галка запомнить меня {remember_me}'.format(
             username=form.username.data, remember_me=form.remember_me.data
         ))
-        return redirect('/index')
+        return redirect(url_for('index'))
     #else:
     #    print("Ошибки, некоторые поля пустые или заполнены не верно!")
 

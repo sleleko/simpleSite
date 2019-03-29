@@ -30,3 +30,7 @@ def login():
     #    print("Ошибки, некоторые поля пустые или заполнены не верно!")
 
     return render_template('login.html', title="Вход", form=form)
+
+@app.route('/gatekeeper', methods=['GET', 'POST'])
+def gk():
+    return "Example return"

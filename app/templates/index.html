@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    {% if title %}
+    <title>{{ title }} - Leleko.Ru</title>
+    {% else %}
+    <title>Без имени - Leleko.Ru</title>
+    {% endif %}
+</head>
+<body>
+    <nav>Главное меню:
+        <ul class="li"><a href="{{ url_for('index') }}">Главная</a> </ul>
+        <ul class="li"><a href="{{ url_for('about') }}">Обо мне</a> </ul>
+        <ul class="li"><a href="{{ url_for('login') }}">Вход</a> </ul>
+        <ul class="li"><a href="{{ url_for('contactme') }}">Контакты</a> </ul>
+    </nav>
+    <hr>
+    {% with messages = get_flashed_messages() %}
+        {% if messages %}
+        <ul>
+            {% for message in messages %}
+            <li>{{ message }}</li>
+            {% endfor %}
+        </ul>
+        {% endif %}
+    {% endwith %}
+    {% block content %}{% endblock %}
+
+    {% block counters %}
+        <!-- Yandex.Metrika counter -->
+        <script type="text/javascript" >
+           (function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
+           m[i].l=1*new Date();k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})
+           (window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");
+
+           ym(45463110, "init", {
+                clickmap:true,
+                trackLinks:true,
+                accurateTrackBounce:true,
+                webvisor:true
+           });
+        </script>
+        <noscript><div><img src="https://mc.yandex.ru/watch/45463110" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+        <!-- /Yandex.Metrika counter -->
+    {% endblock %}
+</body>
+</html>

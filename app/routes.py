@@ -25,4 +25,7 @@ def login():
             username=form.username.data, remember_me=form.remember_me.data
         ))
         return redirect('/index')
+    #else:
+    #    print("Ошибки, некоторые поля пустые или заполнены не верно!")
+
     return render_template('login.html', title="Вход", form=form)

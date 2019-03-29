@@ -10,10 +10,10 @@
 </head>
 <body>
     <nav>Главное меню:
-        <ul class="li"><a href="/index">Главная</a> </ul>
-        <ul class="li"><a href="/about">Обо мне</a> </ul>
-        <ul class="li"><a href="/login">Вход</a> </ul>
-        <ul class="li"><a href="/contacts">Контакты</a> </ul>
+        <ul class="li"><a href="{{ url_for('index') }}">Главная</a> </ul>
+        <ul class="li"><a href="{{ url_for('about') }}">Обо мне</a> </ul>
+        <ul class="li"><a href="{{ url_for('login') }}">Вход</a> </ul>
+        <ul class="li"><a href="{{ url_for('contactme') }}">Контакты</a> </ul>
     </nav>
     <hr>
     {% with messages = get_flashed_messages() %}

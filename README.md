@@ -12,4 +12,13 @@ source venv/bin/activate
 pip3 install flask-sqlalchemy
 pip3 install flask-migration
 
+## create migrations under (venv) mode
+flask db init
+
+### first migration under (venv) mode
+flask db migrate -m "users table"
+
+### first upgrade migration under (venv) mode
+flask db upgrade
+
 Thats all

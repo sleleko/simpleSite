@@ -1,9 +1,7 @@
 import os
-import sys
 
 
 basedir = os.path.abspath(os.path.dirname(__file__))
-#basedir = sys.path.insert(0, os.path.join(os.path.dirname(__file__), 'venv/Lib/python3.7/site-packages'))
 
 
 class Config(object):

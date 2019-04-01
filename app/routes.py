@@ -5,18 +5,22 @@ from flask import url_for
 from app import app
 from app.forms import LoginForm
 
+
 @app.route('/')
 @app.route('/index')
 def index():
     return render_template('index.html', title='Главная')
 
+
 @app.route('/about')
 def about():
     return  render_template('about.html', title='Обо мне')
 
+
 @app.route('/contacts')
 def contactme():
     return render_template('contacts.html', title='Связаться со мной')
+
 
 @app.route('/login', methods=['GET', 'POST'])
 def login():
@@ -26,10 +30,11 @@ def login():
             username=form.username.data, remember_me=form.remember_me.data
         ))
         return redirect(url_for('index'))
-    #else:
+    # else:
     #    print("Ошибки, некоторые поля пустые или заполнены не верно!")
 
     return render_template('login.html', title="Вход", form=form)
+
 
 @app.route('/gatekeeper', methods=['GET', 'POST'])
 def gk():

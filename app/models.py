@@ -12,7 +12,7 @@ class User(db.Model):
         return '<User {}>'.format(self.username)
 
 
-class SiteContent(db.Model):
+class Content(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     timestamp = db.Column(db.DateTime, index=True, default=datetime.utcnow)
     title = db.Column(db.String(40))

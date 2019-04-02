@@ -21,4 +21,7 @@ flask db migrate -m "users table"
 ### first upgrade migration under (venv) mode
 flask db upgrade
 
+### complete of migration under (venv) mode
+flask db migrate -m "content table"
+
 Thats all

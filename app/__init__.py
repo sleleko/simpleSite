@@ -12,6 +12,7 @@ app.config['SECRET_KEY'] = 'mysupersecret'
 db = SQLAlchemy(app)
 migrate = Migrate(app, db)
 login = LoginManager(app)
+login.login_view = 'login'
 
 from app import routes, models
 

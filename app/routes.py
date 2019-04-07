@@ -34,7 +34,7 @@ def login():
             return redirect(url_for('login'))
         # action login user
         login_user(user, remember=form.remember_me.data)
-    return redirect(url_for('index'))
+        return redirect(url_for('index'))
 
     return render_template('login.html', title="Вход", form=form)
 

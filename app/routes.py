@@ -1,9 +1,7 @@
-from flask import render_template
-from flask import flash
-from flask import redirect
-from flask import url_for
-from app import app
+from flask import render_template, flash, redirect, url_for, app
 from app.forms import LoginForm
+from flask_login import current_user, login_user, logout_user
+from app.models import User
 
 
 @app.route('/')
@@ -14,7 +12,7 @@ def index():
 
 @app.route('/about')
 def about():
-    return  render_template('about.html', title='Обо мне')
+    return render_template('about.html', title='Обо мне')
 
 
 @app.route('/contacts')
@@ -24,18 +22,28 @@ def contactme():
 
 @app.route('/login', methods=['GET', 'POST'])
 def login():
+    if current_user.is_authenticated:
+        return redirect(url_for('index'))
     form = LoginForm()
     if form.validate_on_submit():
-        flash('Вход под пользователем {username}, галка запомнить меня {remember_me}'.format(
-            username=form.username.data, remember_me=form.remember_me.data
-        ))
-        return redirect(url_for('index'))
-    # else:
-    #    print("Ошибки, некоторые поля пустые или заполнены не верно!")
+        user = User.query.filter_by(username=form.username.data).first()
+        if user is None or user.check_password(form.password.data):
+            flash('Вход под пользователем {username}, галка запомнить меня {remember_me}'.format(
+                username=form.username.data, remember_me=form.remember_me.data))
+            return redirect(url_for('login'))
+        # action login user
+        login_user(user, remember=form.remember_me.data)
+    return redirect(url_for('index'))
 
     return render_template('login.html', title="Вход", form=form)
 
 
-@app.route('/gatekeeper', methods=['GET', 'POST'])
+@app.route('/logout')
+def logout():
+    logout_user()
+    return redirect(url_for('index'))
+
+
+@app.route('/example', methods=['GET', 'POST'])
 def gk():
     return "Example return"

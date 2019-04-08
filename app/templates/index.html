@@ -12,6 +12,7 @@
     <nav>Главное меню:
         <ul class="li"><a href="{{ url_for('index') }}">Главная</a> </ul>
         <ul class="li"><a href="{{ url_for('example') }}">Примеры работы</a> </ul>
+        <ul class="li"><a href="{{ url_for('example2') }}">Примеры работы с авторизацией</a> </ul>
         <ul class="li"><a href="{{ url_for('about') }}">Обо мне</a> </ul>
         {% if current_user.is_anonymous %}
         <ul class="li"><a href="{{ url_for('login') }}">Вход</a> </ul>

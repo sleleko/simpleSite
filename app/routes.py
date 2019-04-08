@@ -50,6 +50,7 @@ def example():
     return "Example return content for anonymous user"
 
 
+@app.route('/example2')
 @login_required
 def example2():
     return "Example return content for auth users only"

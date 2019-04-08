@@ -21,6 +21,9 @@
         {% endif %}
         <ul class="li"><a href="{{ url_for('contactme') }}">Контакты</a> </ul>
     </nav>
+    <div>
+        Текущий пользователь: {{ current_user.username }}
+    </div>
     <hr>
     {% with messages = get_flashed_messages() %}
         {% if messages %}

@@ -10,17 +10,19 @@
 </head>
 <body>
     <nav>Главное меню:
-        <ul class="li"><a href="{{ url_for('index') }}">Главная</a> </ul>
-        <ul class="li"><a href="{{ url_for('example') }}">Примеры работы</a> </ul>
-        <ul class="li"><a href="{{ url_for('example2') }}">Примеры работы с авторизацией</a> </ul>
-        <ul class="li"><a href="{{ url_for('about') }}">Обо мне</a> </ul>
-        {% if current_user.is_anonymous %}
-        <ul class="li"><a href="{{ url_for('login') }}">Вход</a> </ul>
-        {% else %}
-
-        <ul class="li"><a href="{{ url_for('logout') }}">Выход</a> </ul>
-        {% endif %}
-        <ul class="li"><a href="{{ url_for('contactme') }}">Контакты</a> </ul>
+        <ul>
+            <li class="menu"><a href="{{ url_for('index') }}">Главная</a> </li>
+            <li class="menu"><a href="{{ url_for('example') }}">Примеры работы</a> </li>
+            <li class="menu"><a href="{{ url_for('example2') }}">Примеры работы с авторизацией</a> </li>
+            <li class="menu"><a href="{{ url_for('about') }}">Обо мне</a> </li>
+            {% if current_user.is_anonymous %}
+                <li class="menu"><a href="{{ url_for('login') }}">Вход</a> </li>
+            {% else %}
+                <li class="menu"><a href="{{ url_for('user', username=current_user.username) }}">Профиль</a></li>
+                <li class="menu"><a href="{{ url_for('logout') }}">Выход</a> </li>
+            {% endif %}
+            <li class="menu"><a href="{{ url_for('contactme') }}">Контакты</a> </li>
+        </ul>
     </nav>
     <div>
         Текущий пользователь: {{ current_user.username }}

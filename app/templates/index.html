@@ -17,6 +17,7 @@
         {% if current_user.is_anonymous %}
         <ul class="li"><a href="{{ url_for('login') }}">Вход</a> </ul>
         {% else %}
+
         <ul class="li"><a href="{{ url_for('logout') }}">Выход</a> </ul>
         {% endif %}
         <ul class="li"><a href="{{ url_for('contactme') }}">Контакты</a> </ul>

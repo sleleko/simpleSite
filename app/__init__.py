@@ -30,6 +30,7 @@ if not app.debug:
             mailhost=(app.config['MAIL_SERVER'], app.config['MAIL_PORT']),
             fromaddr='no-reply' + app.config['MAIL_SERVER'],
             toaddrs=app.config['ADMINS'],
+            subject='simpleSite Error',
             credentials=auth, secure=secure)
         mail_handler.setLevel(logging.ERROR)
         app.logger.addhandler(mail_handler)

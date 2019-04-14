@@ -5,6 +5,7 @@ from flask_migrate import Migrate
 from flask_login import LoginManager
 from flask import logging
 from logging.handlers import SMTPHandler
+from app import routes, models, errors
 
 
 app = Flask(__name__)
@@ -31,11 +32,7 @@ if not app.debug:
             toaddrs=app.config['ADMINS'],
             credentials=auth, secure=secure)
         mail_handler.setLevel(logging.ERROR)
-        api.logger.addhandler(mail_handler)
-
-
-
-from app import routes, models, errors
+        app.logger.addhandler(mail_handler)
 
 
 

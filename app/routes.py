@@ -64,7 +64,7 @@ def reg():
 def user(username):
     user = User.query.filter_by(username=username).first_or_404()
     content = [
-        {'autor': user, 'content': 'test content'}
+        {'user': user, 'content': 'test content'}
     ]
     return render_template('user.html', user=user, content=content)
 

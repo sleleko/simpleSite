@@ -8,14 +8,15 @@ from flask_login import LoginManager
 from config import Config
 
 app = Flask(__name__)
-app.config.from_object(Config)
-app.secret_key = '123321'#app.config('SECRET_KEY')
+#app.config.from_object('config.Config')
+app.config.from_object('app.config.Config')
+# app.secret_key = '123321'
+# app.config('SECRET_KEY')
 db = SQLAlchemy(app)
 migrate = Migrate(app, db)
 login = LoginManager(app)
 login.login_view = 'login'
-app.debug = True
-
+# app.debug = True
 
 if not app.debug:
     

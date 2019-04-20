@@ -6,9 +6,11 @@ from flask_sqlalchemy import SQLAlchemy
 from flask_migrate import Migrate
 from flask_login import LoginManager
 from config import Config
+from flask_bootstrap import Bootstrap
 
 app = Flask(__name__)
 #app.config.from_object('config.Config')
+bootstrap = Bootstrap(app)
 app.config.from_object('app.config.Config')
 # app.secret_key = '123321'
 # app.config('SECRET_KEY')

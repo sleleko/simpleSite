@@ -8,43 +8,55 @@
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     {% endblock %}
     {% block navbar %}
-        <nav class="navbar navbar-default">
-            <div class="container">
-                <div class="navbar-header">
-                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-                        <span class="sr-only">Toggle navigation</span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
+        <header>
+            <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+                <a class="navbar-brand" href="{{ url_for('index') }}">Leleko.Ru</a>
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle naviagation">
+                        <span class="navbar-toggler-icon"></span>
                     </button>
-                    <a class="navbar-brand" href="{{ url_for('index') }}">Leleko.Ru</a>
+                    <div class="collapse navbar-collapse" id="navbarCollapse">
+                        <ul class="navbar-nav mr-auto">
+                            <li class="nav-item active">
+                                <a class="nav-link" href="{{ url_for('index') }}">Главная</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ url_for('about') }}">Обо мне</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ url_for('example') }}">Примеры работы</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ url_for('example2') }}">Примеры работы с авторизацией</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ url_for('contactme') }}">Контакты</a>
+                            </li>
+                        </ul>
+                        <ul class="navbar-nav navbar-right">
+                            {% if current_user.is_anonymous %}
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ url_for('login') }}">Вход</a>
+                            </li>
+                            {% else %}
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ url_for('user', username=current_user.username) }}">Профиль</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ url_for('logout') }}">Выйти</a>
+                            </li>
+                            {% endif %}
+                        </ul>
+                    </div>
                 </div>
-                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                    <ul class="nav navbar-nav">
-                        <li><a href="{{ url_for('index') }}">Главная</a></li>
-                        <li><a href="{{ url_for('about') }}">Обо мне</a></li>
-                        <li><a href="{{ url_for('example') }}">Примеры работы</a></li>
-                        <li><a href="{{ url_for('example2') }}">Примеры работы с авторизацией</a></li>
-                        <li><a href="{{ url_for('contactme') }}">Контакты</a></li>
-                    </ul>
-                    <ul class="nav navbar-nav navbar-right">
-                        {% if current_user.is_anonymous %}
-                        <li><a href="{{ url_for('login') }}">Вход</a></li>
-                        {% else %}
-                        <li><a href="{{ url_for('user', username=current_user.username) }}">Профиль</a></li>
-                        <li><a href="{{ url_for('logout') }}">Выйти</a></li>
-                        {% endif %}
-                    </ul>
-                </div>
-            </div>
-        </nav>
+            </nav>
+        </header>
     {% endblock %}
         <!--div>
             Текущий пользователь: {{ current_user.username }}
         </div-->
 
     {% block content %}
-        <div class="container-fluid">
+        <div class="container">
             {% with messages = get_flashed_messages() %}
                 {% if messages %}
                 <ul>
@@ -61,8 +73,8 @@
     {% endblock %}
     {%  block scripts %}
         <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
     {% endblock %}
 
 
@@ -83,6 +95,3 @@
         <noscript><div><img src="https://mc.yandex.ru/watch/45463110" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
         <!-- /Yandex.Metrika counter -->
     {% endblock %}
-
-</body>
-</html>

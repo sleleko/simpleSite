@@ -59,16 +59,14 @@
         <div class="container">
             {% with messages = get_flashed_messages() %}
                 {% if messages %}
-                <ul>
                     {% for message in messages %}
-                    <li>{{ message }}</li>
+                        <div class="alert alert-info" role="alert">{{ message }}</div>
                     {% endfor %}
-                </ul>
                 {% endif %}
-                {# содержимое из блока app_conttent #}
-                {% block app_content %}
-                {% endblock %}
             {% endwith %}
+        {# содержимое из блока app_conttent #}
+        {% block app_content %}
+        {% endblock %}
         </div>
     {% endblock %}
     {%  block scripts %}

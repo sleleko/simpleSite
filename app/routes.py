@@ -1,6 +1,6 @@
 from flask import render_template, flash, redirect, url_for, request
 from app import app, db
-from app.forms import LoginForm, RegisterForm
+from app.forms import LoginForm, RegisterForm, ContactForm
 from flask_login import current_user, login_user, logout_user, login_required
 from app.models import User
 from werkzeug.urls import url_parse
@@ -13,9 +13,14 @@ def home():
     return render_template('index.html', title='Главная')
 
 
-@app.route('/contacts')
+@app.route('/contactme', methods=['GET', 'POST'])
 def contactme():
-    return render_template('contacts.html', title='Связаться со мной')
+    form = ContactForm()
+    if form.validate_on_submit():
+        flash("Ваше сообщение успешно отправлено!")
+        return redirect(url_for('contactme'))
+
+    return render_template('contacts.html', title='Связаться со мной', form=form)
 
 
 @app.route('/login', methods=['GET', 'POST'])

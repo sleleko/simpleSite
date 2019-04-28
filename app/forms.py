@@ -1,5 +1,5 @@
 from flask_wtf import FlaskForm
-from wtforms import StringField, PasswordField, BooleanField, SubmitField
+from wtforms import StringField, TextAreaField, PasswordField, BooleanField, SubmitField
 from wtforms.validators import ValidationError, DataRequired, Email, EqualTo
 from app.models import User
 
@@ -29,3 +29,10 @@ class RegisterForm(FlaskForm):
         user = User.query.filter_by(email=email.data).first()
         if user is not None:
             raise ValidationError('Пользователь с таким E-mail уже есть, выберите другой E-mail')
+
+
+class ContactForm(FlaskForm):
+    name = StringField('Ваше имя (*)', validators=[DataRequired()])
+    email = StringField('E-mail (*)', validators=[DataRequired()])
+    msg = TextAreaField('Текст вашего сообщения (*)', validators=[DataRequired()])
+    submit = SubmitField("Отправить сообщение")

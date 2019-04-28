@@ -20,9 +20,6 @@
                                 <a class="nav-link" href="{{ url_for('home') }}">Главная</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="{{ url_for('about') }}">Обо мне</a>
-                            </li>
-                            <li class="nav-item">
                                 <a class="nav-link" href="{{ url_for('portfolio') }}">Примеры работы</a>
                             </li>
                             <li class="nav-item">
@@ -68,6 +65,14 @@
                 </div>
 
                 {% block app_content %}
+                    <div class="card d-flex align-items-center">
+                        <div class="card-body">
+                            <h3>Your name</h3>
+                            <h6>Your position</h6>
+                            <h5 class="card-title">Experience | Skills</h5>
+                            <p>Some desciption about You, for example Your bio.</p>
+                        </div>
+                    </div>
                 {% endblock %}
             </div>
         </div>

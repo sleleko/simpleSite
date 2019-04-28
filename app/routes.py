@@ -7,9 +7,9 @@ from werkzeug.urls import url_parse
 
 
 @app.route('/')
-@app.route('/index')
-@login_required
-def index():
+@app.route('/home')
+# @login_required
+def home():
     return render_template('index.html', title='Главная')
 
 
@@ -75,12 +75,14 @@ def logout():
     return redirect(url_for('index'))
 
 
-@app.route('/example', methods=['GET', 'POST'])
+'''
+@app.route('/portfolio', methods=['GET', 'POST'])
 def example():
     return "Example return content for anonymous user"
+'''
 
 
-@app.route('/example2')
+@app.route('/portfolio')
 @login_required
-def example2():
-    return "Example return content for auth users only"
+def portfolio():
+    return render_template('portfolio.html')
